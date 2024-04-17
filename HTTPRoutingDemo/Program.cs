@@ -1,4 +1,9 @@
 ﻿
+using HTTPRoutingDemo.Database.Models;
+using HTTPRoutingDemo.Repositories;
+using HTTPRoutingDemo.Services;
+using Microsoft.EntityFrameworkCore;
+
 namespace HTTPRoutingDemo;
 
 public class Program
@@ -13,6 +18,10 @@ public class Program
         // Learn more about configuring Swagger/OpenAPI at https://aka.ms/aspnetcore/swashbuckle
         builder.Services.AddEndpointsApiExplorer();
         builder.Services.AddSwaggerGen();
+        builder.Services.AddDbContext<CRMContext>(options =>
+            options.UseInMemoryDatabase("CRMDemo"), ServiceLifetime.Singleton);
+        builder.Services.AddSingleton<CustomerRepository>();
+        builder.Services.AddSingleton<CustomerService>();
 
         var app = builder.Build();
 
