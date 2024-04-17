@@ -1,0 +1,7 @@
+﻿@HTTPRoutingDemo_HostAddress = http://localhost:5262
+
+GET {{HTTPRoutingDemo_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
+
